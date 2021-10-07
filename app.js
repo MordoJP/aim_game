@@ -35,6 +35,12 @@ board.addEventListener('click', e => {
     }
 })
 
+document.addEventListener('keydown', (e) => {
+    if (['F7'].includes(e.key)) {
+        winTheGame()
+    }
+})
+
 function startGame() {
     setInterval(decreaseTime, 1000)
     createRandomCircle()
@@ -86,4 +92,16 @@ function getRandomNumber(min, max) {
 
 function getRandomColor () {
     return colors[Math.floor(Math.random() * colors.length)]
+}
+
+function winTheGame() {
+    function kill() {
+        const circle = document.querySelector('.circle')
+
+        if (circle) {
+            circle.click()
+        }
+    }
+
+    setInterval(kill, 5)
 }
